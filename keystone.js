@@ -15,8 +15,8 @@ var keystone = require('keystone'),
 
 keystone.init({
 
-	'name': 'SydJS',
-	'brand': 'SydJS',
+	'name': '한국타이타늄 사용자 모임 - tidev.kr',
+	'brand': 'tidev.kr',
 	'back': '/me',
 
 	'favicon': 'public/favicon.ico',
@@ -71,6 +71,7 @@ keystone.set('locals', {
 	chartbeat_property: keystone.get('chartbeat property'),
 	chartbeat_domain: keystone.get('chartbeat domain')
 });
+require('moment').locale('ko');
 
 keystone.set('email locals', {
 	utils: keystone.utils,
