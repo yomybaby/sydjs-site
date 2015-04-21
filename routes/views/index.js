@@ -12,7 +12,7 @@ exports = module.exports = function(req, res) {
 	
 	locals.section = 'home';
 	locals.meetup = false;
-	locals.page.title = 'Welcome to SydJS';
+	locals.page.title = 'tidev.kr 모임 사이트에 오신 것을 환영합니다.';
 	
 	locals.rsvpStatus = {};
 	

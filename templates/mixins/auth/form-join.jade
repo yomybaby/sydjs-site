@@ -15,7 +15,7 @@ mixin form-join(args)
 		div(class=args.modal ? 'modal-body' : null)
 			include ../../includes/social-signin
 			p.auth-form-divider: span.auth-form-divider-text or
-			//- p Or use your email, that's okay too:
+			p Or use your email, that's okay too:
 			form(method='post', action='/join', autocomplete='off', novalidate).auth-form
 				input(type='hidden', name='action', value='join')
 				input(type='hidden', name='target', value=!args.modal ? form.target : page.path)
@@ -50,6 +50,8 @@ mixin form-join(args)
 						input(type='website', name='website', placeholder='Website (optional)', value=!args.modal ? form.website : null).form-control.form-control--last
 				button(type='submit').btn.btn-block.btn-primary.btn-submit Join
 		
-			p.text-center.text-muted.mt-3
-				| Already have an account? 
+			p.text-center
+				| 본 tidev.kr 모임사이트는 <a href="http://tidev.kr", target="_blank">tidev.kr</a>의 회원 연동을 통해서만 로그인 가능합니다.
+			p.text-center
+				| 계정이 없으신가요? 
 				a(href=args.modal ? js : '/signin', rel=args.modal ? 'modal-pane' : null, data-modal-pane=args.modal ? 'signin' : null) Sign in

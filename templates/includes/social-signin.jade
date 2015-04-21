@@ -1,4 +1,8 @@
 .social-signup-buttons
+	.signup-button: a(href='/auth/github?target=' + page.path, title='Sign in with tidev.kr').btn.btn-block.btn-primary.btn-submit
+		//- span.entypo-social.entypo-github
+		span  tidev.kr 계정으로 로그인하기
+
 	.signup-button: a(href='/auth/github?target=' + page.path, title='Sign in with Github').btn.btn-link-github.btn-block
 		span.entypo-social.entypo-github
 		span.signup-button__text  Github

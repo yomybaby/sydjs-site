@@ -39,8 +39,8 @@ block intro
 						else
 							#next-meetup(data-id=meetup.id)
 								if meetup.rsvpsAvailable
-									a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger RSVP Now 
-										span.text-thin (#{plural(meetup.remainingRSVPs, '* spot left', '* spots left')})
+									a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger 지금 참가신청
+										span.text-thin (#{plural(meetup.remainingRSVPs, '* 자리 남음', '* 자리 남음')})
 								else
 									.alert.alert-success.mb-0.text-center No more tickets...
 			
@@ -102,9 +102,9 @@ block intro
 		
 		//- About
 		article.section.section--featured.home-about: .container
-			h2 In Sydney and into JavaScript? You need to join SydJS!
+			h2 JavaScript로 Native 모바일 앱을 만들고 싶으세요? 그럼 어서 tidev.kr에 가입하세요.
 			.row: .col-sm-8.col-sm-offset-2
-				p.lead Every 3rd Wednesday of the month you'll find us talking about what we're doing and what's happening around us in the world of JavaScript.
+				p.lead 때로는 가볍고 작은 모임으로, 때로는 크게 매달 정기적인 모임을 엽니다. 함께 얘기나눠요.
 			if !user
 				.row: .col-sm-4.col-sm-offset-4
 					a(href='/join', data-from=page.path).js-auth-trigger.btn.btn-lg.btn-block.btn-primary.mv-1
@@ -113,7 +113,7 @@ block intro
 				a(href='/about') Learn more about SydJS
 				|  &nbsp;&middot;&nbsp; 
 				a(href='/members') Find your friends in SydJS
-			p.mt-1: a(href="https://twitter.com/sydjs", class="twitter-follow-button", data-show-count="true", data-size="large") Follow @sydjs
+			//- p.mt-1: a(href="https://twitter.com/sydjs", class="twitter-follow-button", data-show-count="true", data-size="large") Follow @sydjs
 //- JS
 block js
 	//- twitter
