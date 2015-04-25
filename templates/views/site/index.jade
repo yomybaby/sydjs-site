@@ -21,7 +21,7 @@ block intro
 				.hero-background
 					//-img(src='/images/placeholders/sydney-1.jpg')
 				.hero-intro-content
-					h5.subtitle #{meetup.state == 'active' ? 'Next' : 'Last'} Meetup
+					h5.subtitle #{meetup.state == 'active' ? '다가오는' : '지난'} 모임
 					h1.title= meetup.name
 					p.byline: strong #{meetup._.startDate.format('MM월 DD일(ddd), YYYY년')} &#8212; #{meetup._.startDate.format('a h:mm')} ~ #{meetup._.endDate.format('a h:mm')}
 					p.byline #{meetup.place} &#8212; 

@@ -14,8 +14,8 @@ mixin form-signin(args)
 				h4.modal-title TiDev.kr 모임 사이트에 로그인
 				span.text-center.text-muted.mt-3 tidev.kr 포럼 사이트와 별도의 계정으로 관리되고 있어요. <br/> tidev.kr 포럼 회원이어도 별도로 가입이 필요합니다.
 		div(class=args.modal ? 'modal-body' : null)
-			include ../../includes/social-signin
-			p.auth-form-divider: span.auth-form-divider-text or
+			//- include ../../includes/social-signin
+			//- p.auth-form-divider: span.auth-form-divider-text or
 			form(method='post', action='/signin', role='signin', novalidate).auth-form
 				input(type='hidden', name='action', value='signin')
 				input(type='hidden', name='target', value=!args.modal ? form.target : page.path)
