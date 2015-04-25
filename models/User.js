@@ -237,7 +237,7 @@ User.schema.methods.resetPassword = function(callback) {
 		new keystone.Email('forgotten-password').send({
 			user: user,
 			link: '/reset-password/' + user.resetPasswordKey,
-			subject: 'Reset your SydJS Password',
+			subject: 'Reset your meetup.tidev.kr Password',
 			to: user.email,
 			from: {
 				name: 'TiDev.kr',
