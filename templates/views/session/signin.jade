@@ -6,7 +6,8 @@ block flash-messages
 block content
 	.container-xs
 		.page-intro
-			h1 Sign into SydJS
+			h1 meetup.tidev.kr 로그인
+			//- messages.push('tidev.kr 포럼 회원이어도 별도의 가입이 필요합니다.');
 			+flash-messages(messages)
 		.page-content
 			+auth-forms({ modal: false, initial: 'signin' })

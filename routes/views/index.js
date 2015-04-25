@@ -12,8 +12,8 @@ exports = module.exports = function(req, res) {
 	
 	locals.section = 'home';
 	locals.meetup = false;
-	locals.page.title = 'tidev.kr 모임 사이트에 오신 것을 환영합니다.';
-	
+	locals.page.title = '자바스크립트로 네이티브앱을 만드는 Titanium 사용자 정기 모임';
+
 	locals.rsvpStatus = {};
 	
 	

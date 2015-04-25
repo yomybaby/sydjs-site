@@ -30,7 +30,7 @@ exports = module.exports = function(req, res) {
 		}
 		
 		var onFail = function() {
-			req.flash('error', 'Your username or password were incorrect, please try again.');
+			req.flash('error', '이메일과 비밀번호가 일치하지 않습니다. 다시 시도해주세요.<br/>tidev.kr 포럼에 가입되어 있더라도 본 meetup 사이트는 별도로 가입 해주서야 합니다.');
 			return next();
 		}
 		
