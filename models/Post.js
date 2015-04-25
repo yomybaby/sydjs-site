@@ -50,34 +50,34 @@ Post.relationship({ ref: 'PostComment', refPath: 'post', path: 'comments' });
  */
 
 Post.schema.methods.notifyAdmins = function(callback) {
-	
+
 	var post = this;
-	
+
 	// Method to send the notification email after data has been loaded
 	var sendEmail = function(err, results) {
-		
+
 		if (err) return callback(err);
-		
+
 		async.each(results.admins, function(admin, done) {
-			
+
 			new keystone.Email('admin-notification-new-post').send({
 				admin: admin.name.first || admin.name.full,
 				author: results.author ? results.author.name.full : 'Somebody',
 				title: post.title,
-				keystoneURL: 'http://www.sydjs.com/keystone/post/' + post.id,
+				keystoneURL: 'http://meetup.tidev.kr/keystone/post/' + post.id,
 				subject: 'New Post to SydJS'
 			}, {
 				to: admin,
 				from: {
-					name: 'SydJS',
-					email: 'contact@sydjs.com'
+					name: 'TiDev.kr',
+					email: 'master@tidev.kr'
 				}
 			}, done);
-			
+
 		}, callback);
-		
+
 	}
-	
+
 	// Query data in parallel
 	async.parallel({
 		author: function(next) {
@@ -88,7 +88,7 @@ Post.schema.methods.notifyAdmins = function(callback) {
 			keystone.list('User').model.find().where('isAdmin', true).exec(next)
 		}
 	}, sendEmail);
-	
+
 }
 
 

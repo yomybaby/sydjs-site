@@ -26,7 +26,7 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'jade',
 	'view cache': false,
-	
+
 	'emails': 'templates/emails',
 
 	'auto update': true,
@@ -37,7 +37,7 @@ keystone.init({
 	'auth': true,
 	'user model': 'User',
 	'cookie secret': process.env.COOKIE_SECRET || 'sydjs',
-	
+
 	'mandrill api key': process.env.MANDRILL_KEY,
 
 	'google api key': process.env.GOOGLE_BROWSER_KEY,
@@ -45,12 +45,12 @@ keystone.init({
 
 	'ga property': process.env.GA_PROPERTY,
 	'ga domain': process.env.GA_DOMAIN,
-	
+
 	'chartbeat property': process.env.CHARTBEAT_PROPERTY,
 	'chartbeat domain': process.env.CHARTBEAT_DOMAIN,
 
 	'basedir': __dirname
-	
+
 });
 
 keystone.import('models');
@@ -77,7 +77,7 @@ keystone.set('email locals', {
 	utils: keystone.utils,
 	host: (function() {
 		if (keystone.get('env') === 'staging') return 'http://sydjs-beta.herokuapp.com';
-		if (keystone.get('env') === 'production') return 'http://www.sydjs.com';
+		if (keystone.get('env') === 'production') return 'http://meetup.tidev.kr';
 		return (keystone.get('host') || 'http://localhost:') + (keystone.get('port') || '3000');
 	})()
 });

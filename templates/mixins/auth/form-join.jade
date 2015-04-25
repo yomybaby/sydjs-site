@@ -11,7 +11,8 @@ mixin form-join(args)
 		if args.modal
 			.modal-header
 				button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
-				h4.modal-title Join SydJS
+				h4.modal-title TiDev.kr 모임 사이트에 가입하기
+				span.text-center.text-muted.mt-3 tidev.kr 포럼 사이트와 별도의 계정으로 관리되고 있어요. <br/> tidev.kr 포럼 회원이어도 별도로 가입이 필요합니다.
 		div(class=args.modal ? 'modal-body' : null)
 			include ../../includes/social-signin
 			p.auth-form-divider: span.auth-form-divider-text or
@@ -48,10 +49,8 @@ mixin form-join(args)
 					.form-group(class=!args.modal ? checkFormError('website') : null)
 						label(for='website').sr-only Website (optional)
 						input(type='website', name='website', placeholder='Website (optional)', value=!args.modal ? form.website : null).form-control.form-control--last
-				button(type='submit').btn.btn-block.btn-primary.btn-submit Join
+				button(type='submit').btn.btn-block.btn-primary.btn-submit 가입하기
 		
-			p.text-center
-				| 본 tidev.kr 모임사이트는 <a href="http://tidev.kr", target="_blank">tidev.kr</a>의 회원 연동을 통해서만 로그인 가능합니다.
-			p.text-center
-				| 계정이 없으신가요? 
-				a(href=args.modal ? js : '/signin', rel=args.modal ? 'modal-pane' : null, data-modal-pane=args.modal ? 'signin' : null) Sign in
+			p.text-center.text-muted.mt-3
+				| 계정이 있으신가요? 
+				a(href=args.modal ? js : '/signin', rel=args.modal ? 'modal-pane' : null, data-modal-pane=args.modal ? 'signin' : null) 로그인하기
