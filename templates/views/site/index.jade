@@ -97,22 +97,22 @@ block intro
 								else
 									li(title=attendee.name.full): img(src=attendee.photo.exists ? attendee._.photo.thumbnail(80,80) : attendee.avatarUrl || '/images/avatar.png', width=40, height=40, alt=attendee.name.full).img-circle
 //- BODY
-//- block content
+block content
 	.page-content
 		
 		//- About
 		article.section.section--featured.home-about: .container
-			h2 JavaScript로 Native 모바일 앱을 만들고 싶으세요? 그럼 어서 tidev.kr에 가입하세요.
+			h2 자바스크립트로 네이티브앱을 만드는 타이타늄 사용자 모임입니다
 			.row: .col-sm-8.col-sm-offset-2
-				p.lead 때로는 가볍고 작은 모임으로, 때로는 크게 매달 정기적인 모임을 엽니다. 함께 얘기나눠요.
+				p.lead 때로는 가볍고 작은 모임으로, 때로는 크게 매달 정기적인 모임을 엽니다. <br/>함께 얘기나눠요.
 			if !user
 				.row: .col-sm-4.col-sm-offset-4
 					a(href='/join', data-from=page.path).js-auth-trigger.btn.btn-lg.btn-block.btn-primary.mv-1
-						span.text-caps 지금 tidev.kr 가입하기
+						span.text-caps meetup.tidev.kr 가입하기
 			p.mt-1
-				a(href='/about') Learn more about SydJS
-				|  &nbsp;&middot;&nbsp; 
-				a(href='/members') Find your friends in SydJS
+				a(href='/about') tidev.kr 소개
+				//- |  &nbsp;&middot;&nbsp; 
+				//- a(href='/members') Find your friends in SydJS
 			//- p.mt-1: a(href="https://twitter.com/sydjs", class="twitter-follow-button", data-show-count="true", data-size="large") Follow @sydjs
 //- JS
 block js
