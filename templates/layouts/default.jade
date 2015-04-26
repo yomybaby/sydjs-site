@@ -12,12 +12,13 @@ html
 		
 		meta(charset="utf-8")
 		meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+		meta(property="og:image", content="#{host}/images/tidevkr-meetup-og.png")
 
 		//- Appstore smart banner
-		meta(name="apple-itunes-app", content="app-id=897396382")
+		//- meta(name="apple-itunes-app", content="app-id=897396382")
 		
 		title= page.title
-		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+		link(rel="shortcut icon", href="/favicon-ti.ico", type="image/x-icon")
 		link(href="/styles/site.min.css", rel="stylesheet")
 		
 		if user && user.canAccessKeystone
