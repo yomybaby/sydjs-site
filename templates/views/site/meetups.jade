@@ -5,13 +5,13 @@ block intro
 	.container-sm
 		.page-intro
 			h1.page-title Meetups
-			p.lead We usually meet up the 3rd Wednesday of every month. We hope to see you at 
+			p.lead 한달에 한번 정도 모임을 열려고 합니다. 온라인/오프라인, 작은 모임/큰 모임, 가벼운 모임/진지한 모임 상관없이 함께 만나 이야기해봅시다. 
 				if !user
 					a(href='/join').js-auth-trigger our&nbsp;next&nbsp;meetup
 				else
 					| our next meetup
-				| . Stay in the loop - 
-				a(href='http://twitter.com/sydjs', target='_blank') follow us on twitter
+				//- | . Stay in the loop - 
+				//- a(href='http://twitter.com/sydjs', target='_blank') follow us on twitter
 
 		if upcomingMeetup
 			+meetup(upcomingMeetup)
