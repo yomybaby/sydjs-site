@@ -7,20 +7,21 @@ block flash-messages
 block content
 	.container-sm
 		.page-intro
-			p.lead Hi #{user.name.first}, these are your settings and 
-				a(href=user.url) profile details
+			p.lead #{user.name.first}님 안녕하세요, 여기에 설정한 내용은 
+				a(href=user.url) 개인 프로필 화면
+				| 에 나타납니다.
 			//- if nextMeetup
 				.alert.alert-info 
 					span.entypo.entypo-calendar
 					|  The next meetup has been announced - 
-					a(href=nextMeetup.url).alert-link= nextMeetup._.startDate.format('dddd D MMM YYYY')
+					a(href=nextMeetup.url).alert-link= nextMeetup._.startDate.format('L')
 		.page-content.tile.ph-2.pv-2.mb-2
 			+flash-messages(messages)
 			form(method='post', enctype='multipart/form-data', autocomplete='off', novalidate).form-horizontal
 				input(type='hidden', name='action', value='profile.details')
-				h3 Private Info
+				h3 비공개 정보
 				.form-group
-					label.col-sm-2.control-label Name
+					label.col-sm-2.control-label 이름
 					.col-sm-10: .form-row
 						.col-xs-12: input(type='text', name='name.first' value=user.name.first).form-control
 						//- .col-xs-6: input(type='text', name='name.last' value=user.name.last).form-control
@@ -28,107 +29,107 @@ block content
 					label.col-sm-2.control-label Email
 					.col-sm-10: input(type='email', name='email' value=user.email).form-control
 				.form-group
-					strong.col-sm-2.control-label Notify me
+					strong.col-sm-2.control-label 메일 알림
 					.col-sm-10
 						.checkbox: label
 							input(type='checkbox', name='notifications.meetups' value='true' checked=user.notifications.meetups)
-							|  When there is a new meetup
+							|  새로운 모임이 있을 때
 						.checkbox: label
 							input(type='checkbox', name='notifications.posts' value='true' checked=user.notifications.posts)
-							|  When there is a new post
-				hr.mv-2
-				h3 Your Services
-				p.help-block.mb-2 You can authenticate yourself on the SydJS website with any of the services you connect. When connected, links to your Twitter and Github will be displayed on your profile.
+							|  새로운 글이 등록 되었을 때
+				//- hr.mv-2
+				//- h3 Your Services
+				//- p.help-block.mb-2 You can authenticate yourself on the SydJS website with any of the services you connect. When connected, links to your Twitter and Github will be displayed on your profile.
+				//- 
+				//- 
+				//- //- Unconfigured Services
+				//- 
+				//- if !user.services.github.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Github
+				//- 		.col-sm-10
+				//- 			a(href='/auth/github', title='Connect your Github account').btn.btn-github
+				//- 				span.entypo-social.entypo-github
+				//- 				|  Connect your Github account
+				//- if !user.services.twitter.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Twitter
+				//- 		.col-sm-10
+				//- 			a(href='/auth/twitter', title='Connect your Twitter account').btn.btn-twitter
+				//- 				span.entypo-social.entypo-twitter
+				//- 				|  Connect your Twitter account
+				//- if !user.services.google.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Google
+				//- 		.col-sm-10
+				//- 			a(href='/auth/google', title='Connect your Google account').btn.btn-google
+				//- 				span.entypo-social.entypo-google-circles
+				//- 				|  Connect your Google account
+				//- if !user.services.facebook.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Facebook
+				//- 		.col-sm-10
+				//- 			a(href='/auth/facebook', title='Connect your Google account').btn.btn-facebook
+				//- 				span.entypo-social.entypo-facebook
+				//- 				|  Connect your Facebook account
 				
 				
-				//- Unconfigured Services
-				
-				if !user.services.github.isConfigured
-					.form-group
-						label.col-sm-2.control-label Github
-						.col-sm-10
-							a(href='/auth/github', title='Connect your Github account').btn.btn-github
-								span.entypo-social.entypo-github
-								|  Connect your Github account
-				if !user.services.twitter.isConfigured
-					.form-group
-						label.col-sm-2.control-label Twitter
-						.col-sm-10
-							a(href='/auth/twitter', title='Connect your Twitter account').btn.btn-twitter
-								span.entypo-social.entypo-twitter
-								|  Connect your Twitter account
-				if !user.services.google.isConfigured
-					.form-group
-						label.col-sm-2.control-label Google
-						.col-sm-10
-							a(href='/auth/google', title='Connect your Google account').btn.btn-google
-								span.entypo-social.entypo-google-circles
-								|  Connect your Google account
-				if !user.services.facebook.isConfigured
-					.form-group
-						label.col-sm-2.control-label Facebook
-						.col-sm-10
-							a(href='/auth/facebook', title='Connect your Google account').btn.btn-facebook
-								span.entypo-social.entypo-facebook
-								|  Connect your Facebook account
-				
-				
-				//- Configured Services
-				
-				if user.services.github.isConfigured || user.services.twitter.isConfigured || user.services.google.isConfigured || user.services.facebook.isConfigured
-					hr.line-dashed
-				if user.services.github.isConfigured
-					.form-group
-						label.col-sm-2.control-label Github
-						.col-sm-10.text-muted.faux-label
-							span.entypo-social.entypo-github
-							|  Your account is connected. 
-							a(href='?disconnect=github', title='Revoke authorization of your Github account') Disconnect
-				if user.services.twitter.isConfigured
-					.form-group
-						label.col-sm-2.control-label Twitter
-						.col-sm-10.text-muted.faux-label
-							span.entypo-social.entypo-twitter
-							|  Your account is connected. 
-							a(href='?disconnect=twitter', title='Revoke authorization of your Twitter account') Disconnect
-				if user.services.google.isConfigured
-					.form-group
-						label.col-sm-2.control-label Google
-						.col-sm-10.text-muted.faux-label
-							span.entypo-social.entypo-google-circles
-							|  Your account is connected. 
-							a(href='?disconnect=google', title='Revoke authorization of your Google account') Disconnect
-				if user.services.facebook.isConfigured
-					.form-group
-						label.col-sm-2.control-label Facebook
-						.col-sm-10.text-muted.faux-label
-							span.entypo-social.entypo-facebook
-							|  Your account is connected. 
-							a(href='?disconnect=facebook', title='Revoke authorization of your Facebook account') Disconnect
-				
-
+				//- //- Configured Services
+				//- 
+				//- if user.services.github.isConfigured || user.services.twitter.isConfigured || user.services.google.isConfigured || user.services.facebook.isConfigured
+				//- 	hr.line-dashed
+				//- if user.services.github.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Github
+				//- 		.col-sm-10.text-muted.faux-label
+				//- 			span.entypo-social.entypo-github
+				//- 			|  Your account is connected. 
+				//- 			a(href='?disconnect=github', title='Revoke authorization of your Github account') Disconnect
+				//- if user.services.twitter.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Twitter
+				//- 		.col-sm-10.text-muted.faux-label
+				//- 			span.entypo-social.entypo-twitter
+				//- 			|  Your account is connected. 
+				//- 			a(href='?disconnect=twitter', title='Revoke authorization of your Twitter account') Disconnect
+				//- if user.services.google.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Google
+				//- 		.col-sm-10.text-muted.faux-label
+				//- 			span.entypo-social.entypo-google-circles
+				//- 			|  Your account is connected. 
+				//- 			a(href='?disconnect=google', title='Revoke authorization of your Google account') Disconnect
+				//- if user.services.facebook.isConfigured
+				//- 	.form-group
+				//- 		label.col-sm-2.control-label Facebook
+				//- 		.col-sm-10.text-muted.faux-label
+				//- 			span.entypo-social.entypo-facebook
+				//- 			|  Your account is connected. 
+				//- 			a(href='?disconnect=facebook', title='Revoke authorization of your Facebook account') Disconnect
+				//- 
+				//- 
 				//- Public Info
 				
 				hr.mv-2
-				h3 Public Info
+				h3 공개 정보
 				.form-group
-					label.col-sm-2 Public
+					label.col-sm-2 공개여부
 					.col-sm-10
 						label.checkbox-inline
 							input(type='checkbox', name='isPublic', value='true', checked=user.isPublic ? 'true' : null)
-							|  Show my profile on the SydJS website
+							|  내 프로필을 다름 사람이 meetup.tidev.kr에서 볼 수 있도록 공개합니다.
 				.form-group
-					label.col-sm-2.control-label Website
+					label.col-sm-2.control-label 홈페이지
 					.col-sm-10: input(type='text', name='website' value=user.website).form-control
 				.form-group
-					label.col-sm-2.control-label Bio
+					label.col-sm-2.control-label 소개글
 						br
 						.text-muted (markdown)
 					.col-sm-10
 						textarea(name='bio', rows=5).form-control=user.bio.md
 				
 				.form-group
-					label.col-sm-2.control-label Photo
+					label.col-sm-2.control-label 프로필사진
 					.col-sm-10
 						if user.photo.exists
 							.row
@@ -137,37 +138,37 @@ block content
 						else
 							input(type='file', name='photo_upload')
 				.form-group
-					label.col-sm-2.control-label Mentoring
+					label.col-sm-2.control-label 멘토링
 					.col-sm-10
 						.checkbox: label
 							input(type='checkbox', name='mentoring.available', value='true', checked=user.mentoring.available)
-							|  Available as a mentor
+							|  멘토 역할을 할 수 있습니다.
 				.mentoring-fields
 					.form-group
 						.col-sm-10.col-sm-offset-2
 							.checkbox: label
 								input(type='checkbox', name='mentoring.free', value='true', checked=user.mentoring.free)
-								|  For Free
+								|  무료
 							.checkbox: label
 								input(type='checkbox', name='mentoring.paid', value='true', checked=user.mentoring.paid)
-								|  For Payment
+								|  비용발생
 							.checkbox: label
 								input(type='checkbox', name='mentoring.swap', value='true', checked=user.mentoring.swap)
-								|  For Swap
+								|  상호 교환
 					.form-group
-						label.col-sm-2.control-label I have...
+						label.col-sm-2.control-label 내가 알려드릴 수 있는 것
 						.col-sm-10
 							input(type='text', name='mentoring.have', placeholder='eg; Ruby, Python', value=user.mentoring.have).form-control
 					.form-group
-						label.col-sm-2.control-label I want...
+						label.col-sm-2.control-label 내가 배우고 싶은 것
 						.col-sm-10
 							input(type='text', name='mentoring.want', placeholder='eg; HTML, CSS', value= user.mentoring.want).form-control
 				hr.mv-2
-				button(type='submit', data-loading-text="Saving...").btn.btn-primary Save profile
+				button(type='submit', data-loading-text="Saving...").btn.btn-primary 프로필 저장
 						
 		.ui-reveal
 			.ui-reveal__initial
-				button(type='button').btn.btn-link.ui-reveal__trigger Change Password
+				button(type='button').btn.btn-link.ui-reveal__trigger 비밀번호 변경
 			.ui-reveal__hidden
 				form(method='post', autocomplete='off')
 					input(type='hidden', name='action', value='profile.password')
