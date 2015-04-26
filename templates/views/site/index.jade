@@ -34,15 +34,15 @@ block intro
 									span.text-thin (#{plural(meetup.remainingRSVPs, '* 자리 남음', '* 자리 남음')})
 								include ../../includes/attendance-toggle
 							else
-								.alert.alert-success.mb-0.text-center No more tickets...
+								.alert.alert-success.mb-0.text-center 남은 자리가 없습니다...
 
 						else
 							#next-meetup(data-id=meetup.id)
 								if meetup.rsvpsAvailable
-									a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger 지금 참가신청
+									a(href='/join', data-from=page.path).btn.btn-primary.btn-lg.btn-block.js-auth-trigger 가입 후 참가신청
 										span.text-thin (#{plural(meetup.remainingRSVPs, '* 자리 남음', '* 자리 남음')})
 								else
-									.alert.alert-success.mb-0.text-center No more tickets...
+									.alert.alert-success.mb-0.text-center 남은 자리가 없습니다...
 			
 			//- Details
 			section.hero-details: .container
