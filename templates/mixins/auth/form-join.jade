@@ -36,8 +36,8 @@ mixin form-join(args)
 				.form-groups
 					.form-group(class=!args.modal ? checkFormError('firstname') : null)
 						label(for='firstname').sr-only First name
-						input(type='text', name='firstname', placeholder='First name', value=!args.modal ? form.firstname : null).form-control.form-control--first
-					.form-group(class=!args.modal ? checkFormError('lastname') : null)
+						input(type='text', name='firstname', placeholder='이름', value=!args.modal ? form.firstname : null).form-control.form-control--first
+					//- .form-group(class=!args.modal ? checkFormError('lastname') : null)
 						label(for='lastname').sr-only Last name
 						input(type='text', name='lastname', placeholder='Last name', value=!args.modal ? form.lastname : null).form-control
 					.form-group(class=!args.modal ? checkFormError('email') : null)
