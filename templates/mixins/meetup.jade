@@ -12,7 +12,7 @@ mixin meetup(meetup)
 				.calendar__year=meetup._.startDate.format('YYYY')
 		.meetup-content
 			h2.mv-5= meetup.name
-			h5.mb-1=meetup._.startDate.format('D MMM D일 dddd, YYYY')
+			h5.mb-1=meetup._.startDate.format('MMM D일 dddd, YYYY')
 				|  from #{meetup._.startDate.format('h:mma')} - #{meetup._.endDate.format('h:mma')}
 			if meetup.description
 				p!= meetup.description

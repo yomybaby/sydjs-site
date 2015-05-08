@@ -16,7 +16,7 @@ mixin meetup-talk(talk)
 				h4.title #{talk.name} 
 					if talk.slides
 						a(href=talk.slides, target='_blank', title='View the slides from this talk').text-muted.text-thin
-							|  (view&nbsp;slides)
+							|  (슬라이드&nbsp;보기)
 				if talk.who.length
 					p.subtitle.mb-1 by 
 						each speaker, i in talk.who
@@ -31,4 +31,12 @@ mixin meetup-talk(talk)
 				if talk.link
 					a(href=talk.link, target='_blank', title='View the website for this talk')
 						| #{talk.link} 
+						span.entypo.entypo-chevron-small-right
+				if talk.github
+					a(href=talk.github, target='_blank', title='View the code for this talk')
+						| #{talk.github} 
+						span.entypo.entypo-chevron-small-right
+				if talk.video
+					a(href=talk.video, target='_blank', title='View the video for this talk')
+						| #{talk.video} 
 						span.entypo.entypo-chevron-small-right
