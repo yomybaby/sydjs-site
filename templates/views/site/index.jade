@@ -42,7 +42,10 @@ block intro
 										span.text-thin (#{plural(meetup.remainingRSVPs, '* 자리 남음', '* 자리 남음')})
 								else
 									.alert.alert-success.mb-0.text-center 남은 자리가 없습니다. 다음 달 모임을 기다려주세요.
-			
+				if meetup.state == 'past'
+					.hero-button
+						.alert.alert-info.mb-0.text-center
+							a(href="/meetups/"+meetup.key) 관련 자료 상세 보기 (slide & links)
 			//- Details
 			section.hero-details: .container
 				.row: .col-sm-10.col-sm-offset-1: .row
