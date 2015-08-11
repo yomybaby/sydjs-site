@@ -74,7 +74,7 @@ Meetup.schema.pre('save', function(next) {
 	if (!meetup.publishedDate) meetup.state = 'draft';
 
 	// If meetup date plus one day is after today, it's a past meetup
-	else if (moment().isAfter(moment(meetup.startDate).add('day', 1))) meetup.state = 'past';
+	else if (moment().isAfter(moment(meetup.endDate))) meetup.state = 'past';
 
 	// If publish date is after today, it's an active meetup
 	else if (moment().isAfter(meetup.publishedDate)) meetup.state = 'active';
